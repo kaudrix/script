@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kzin | Script Hub</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #0e0e0e;
+    color: #f0f0f0;
+    overflow-y: scroll;
+  }
+  header {
+    background: #111;
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 2px solid #2c2c2c;
+  }
+  header h1 {
+    font-size: 3rem;
+    background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rgbText 5s linear infinite;
+  }
+  @keyframes rgbText {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    background: #111;
+    border-bottom: 2px solid #2c2c2c;
+  }
+  nav button {
+    background: #222;
+    color: #00ccff;
+    border: none;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.3s;
+  }
+  nav button.active {
+    border-bottom: 3px solid #00ccff;
+    font-weight: bold;
+  }
+  section {
+    padding: 2rem;
+    border-bottom: 1px solid #2c2c2c;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: #00ccff; /* título azul */
+  }
+  .section-header img {
+    width: 180px;
+    height: auto;
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-size: 2rem;
+    margin: 0;
+  }
+  .script-box {
+    background: #1e1e1e;
+    padding: 1rem;
+    border-radius: 8px;
+    position: relative;
+  }
+  .script-box code {
+    display: block;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: #fff;
+  }
+  .copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #00ccff;
+    color: #000;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .copy-btn:hover {
+    background: #00aacc;
+  }
+  /* esconder as seções inicialmente */
+  .content-section {
+    display: none;
+  }
+  /* mostrar a seção ativa */
+  .content-section.active {
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Kzin</h1>
+</header>
+
+<nav>
+  <button id="btn-script" class="active">Script</button>
+  <button id="btn-apostila">Apostila</button>
+</nav>
+
+<!-- Conteúdo Script -->
+<div id="content-script" class="content-section active">
+
+  <section>
+    <div class="section-header">
+      <img src="https://i.ibb.co/JRfQw1q2/20250701-010840.png" alt="Tarefa Sp" />
+      <h2>Tarefa Sp | Sala Do Futuro</h2>
+    </div>
+    <div class="script-box">
+      <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+      <code>https://gabaritus.moonscripts.cloud/</code>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <img src="https://i.ibb.co/Wpvdx02y/20250701-011016.png" alt="Khan Academy" />
+      <h2>Khan Academy</h2>
+    </div>
+    <div class="script-box">
+      <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+      <code>javascript:fetch("https://raw.githubusercontent.com/Snowxyrzk/Khan-Destroyer/refs/heads/main/SCRIPT.js").then(t=&gt;t.text()).then(eval);</code>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <img src="https://i.ibb.co/C3RBZRZ2/20250701-010757.png" alt="Speak" />
+      <h2>Speak</h2>
+    </div>
+    <div class="script-box">
+      <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+      <code>javascript:fetch('https://res.cloudinary.com/dtp29k95n/raw/upload/v1750961477/book_dwju2r.js').then(r=&gt;r.text()).then(r=&gt;eval(r))</code>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <img src="https://i.ibb.co/cKn1dSBz/20250701-010920.png" alt="Redação Paulista" />
+      <h2>Redação Paulista</h2>
+    </div>
+    <div class="script-box">
+      <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+      <code>https://redacao.cupiditys.lol/</code>
+    </div>
+  </section>
+
+</div>
+
+<!-- Conteúdo Apostila -->
+<div id="content-apostila" class="content-section">
+  <section>
+    <div class="section-header">
+      <h2>Apostila - Conteúdo</h2>
+    </div>
+    <p>Aqui vai o conteúdo da apostila que você mandar depois. Pode ser texto, links, imagens, etc.</p>
+  </section>
+</div>
+
+<script>
+  // Função copiar texto do botão
+  function copyScript(btn) {
+    const scriptBox = btn.parentElement;
+    const codeElement = scriptBox.querySelector("code");
+    if (codeElement) {
+      const text = codeElement.textContent.trim();
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          btn.textContent = "✅";
+          setTimeout(() => btn.textContent = "Copiar", 1500);
+        }).catch(() => {
+          fallbackCopy(text, btn);
+        });
+      } else {
+        fallbackCopy(text, btn);
+      }
+    }
+  }
+
+  function fallbackCopy(text, btn) {
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      document.execCommand("copy");
+      btn.textContent = "✅";
+    } catch (err) {
+      console.error("Erro ao copiar:", err);
+    }
+    document.body.removeChild(textarea);
+    setTimeout(() => btn.textContent = "Copiar", 1500);
+  }
+
+  // Alternar seções Script / Apostila ao clicar nos botões
+  const btnScript = document.getElementById('btn-script');
+  const btnApostila = document.getElementById('btn-apostila');
+  const contentScript = document.getElementById('content-script');
+  const contentApostila = document.getElementById('content-apostila');
+
+  btnScript.addEventListener('click', () => {
+    btnScript.classList.add('active');
+    btnApostila.classList.remove('active');
+    contentScript.classList.add('active');
+    contentApostila.classList.remove('active');
+  });
+
+  btnApostila.addEventListener('click', () => {
+    btnApostila.classList.add('active');
+    btnScript.classList.remove('active');
+    contentApostila.classList.add('active');
+    contentScript.classList.remove('active');
+  });
+</script>
+
+</body>
+</html>
+
