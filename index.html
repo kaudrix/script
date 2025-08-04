@@ -2,238 +2,350 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Kzin | Script Hub</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Portal Estudantil</title>
 <style>
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
   body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #0e0e0e;
-    color: #f0f0f0;
-    overflow-y: scroll;
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s, color 0.3s;
   }
-  header {
-    background: #111;
-    padding: 2rem;
-    text-align: center;
-    border-bottom: 2px solid #2c2c2c;
+  body.light {
+    background: #f4f4f4;
+    color: #222;
   }
-  header h1 {
+  .center-screen {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .rgb-text {
     font-size: 3rem;
+    font-weight: bold;
     background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
+    background-size: 400% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: rgbText 5s linear infinite;
+    user-select: none;
   }
   @keyframes rgbText {
-    0% { filter: hue-rotate(0deg); }
-    100% { filter: hue-rotate(360deg); }
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
   }
-  nav {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    background: #111;
-    border-bottom: 2px solid #2c2c2c;
+  .fade-in {
+    animation: fadeIn 2s ease-in-out forwards;
+    opacity: 0;
   }
-  nav button {
-    background: #222;
-    color: #00ccff;
-    border: none;
-    padding: 1rem 2rem;
-    cursor: pointer;
-    font-size: 1.2rem;
-    border-bottom: 3px solid transparent;
-    transition: border-color 0.3s;
+  @keyframes fadeIn {
+    to { opacity: 1; }
   }
-  nav button.active {
-    border-bottom: 3px solid #00ccff;
-    font-weight: bold;
-  }
-  section {
-    padding: 2rem;
-    border-bottom: 1px solid #2c2c2c;
-  }
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    color: #00ccff; /* título azul */
-  }
-  .section-header img {
-    width: 180px;
-    height: auto;
-    flex-shrink: 0;
-  }
-  .section-header h2 {
-    font-size: 2rem;
-    margin: 0;
-  }
-  .script-box {
+  .device-panel {
+    display: none;
+    margin-top: 2rem;
     background: #1e1e1e;
-    padding: 1rem;
-    border-radius: 8px;
-    position: relative;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
   }
-  .script-box code {
-    display: block;
-    white-space: pre-wrap;
-    word-break: break-word;
-    color: #fff;
-  }
-  .copy-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #00ccff;
-    color: #000;
+  .device-panel button {
+    margin: 0.5rem;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    background: #333;
+    color: white;
     border: none;
-    padding: 0.4rem 0.8rem;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s;
   }
+  .device-panel button:hover {
+    background: #555;
+  }
+  header {
+    background-color: #1e1e1e;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #333;
+  }
+  body.light header {
+    background-color: #ddd;
+    border-bottom: 1px solid #bbb;
+    color: #111;
+  }
+  main {
+    padding: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto 2rem;
+    flex: 1;
+    width: 100%;
+  }
+  h2 {
+    margin-bottom: 1rem;
+    border-left: 5px solid #4caf50;
+    padding-left: 0.5rem;
+    font-weight: 600;
+    color: #1E3A8A; /* azul marinho */
+    user-select: none;
+  }
+  body.light h2 {
+    color: #164eab;
+    border-left-color: #388e3c;
+  }
+  .box {
+    background: #222;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    word-break: break-word;
+  }
+  body.light .box {
+    background: #fff;
+    color: #111;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  }
+  .code-block {
+    background: #000;
+    padding: 0.75rem 1rem;
+    color: #0f0;
+    font-family: monospace;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    max-height: 8rem;
+    border-radius: 6px;
+    position: relative;
+    text-align: center;
+    user-select: all;
+  }
+  body.light .code-block {
+    background: #eee;
+    color: #060;
+  }
+  .copy-btn {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    background: #4caf50;
+    border: none;
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.85rem;
+    opacity: 0.85;
+    transition: opacity 0.3s;
+  }
   .copy-btn:hover {
-    background: #00aacc;
+    opacity: 1;
   }
-  /* esconder as seções inicialmente */
-  .content-section {
-    display: none;
+  .code-wrapper {
+    position: relative;
   }
-  /* mostrar a seção ativa */
-  .content-section.active {
-    display: block;
+  .gear {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    user-select: none;
+    color: #4caf50;
+  }
+  .pdfs img {
+    width: 150px;
+    margin-right: 10px;
+    border-radius: 6px;
+  }
+  @media (max-width: 600px) {
+    .code-block {
+      max-height: 10rem;
+      font-size: 0.85rem;
+    }
   }
 </style>
 </head>
 <body>
 
-<header>
-  <h1>Kzin</h1>
-</header>
-
-<nav>
-  <button id="btn-script" class="active">Script</button>
-  <button id="btn-apostila">Apostila</button>
-</nav>
-
-<!-- Conteúdo Script -->
-<div id="content-script" class="content-section active">
-
-  <section>
-    <div class="section-header">
-      <img src="https://i.ibb.co/JRfQw1q2/20250701-010840.png" alt="Tarefa Sp" />
-      <h2>Tarefa Sp | Sala Do Futuro</h2>
-    </div>
-    <div class="script-box">
-      <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
-      <code>https://gabaritus.moonscripts.cloud/</code>
-    </div>
-  </section>
-
-  <section>
-    <div class="section-header">
-      <img src="https://i.ibb.co/Wpvdx02y/20250701-011016.png" alt="Khan Academy" />
-      <h2>Khan Academy</h2>
-    </div>
-    <div class="script-box">
-      <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
-      <code>javascript:fetch("https://raw.githubusercontent.com/Snowxyrzk/Khan-Destroyer/refs/heads/main/SCRIPT.js").then(t=&gt;t.text()).then(eval);</code>
-    </div>
-  </section>
-
-  <section>
-    <div class="section-header">
-      <img src="https://i.ibb.co/C3RBZRZ2/20250701-010757.png" alt="Speak" />
-      <h2>Speak</h2>
-    </div>
-    <div class="script-box">
-      <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
-      <code>javascript:fetch('https://res.cloudinary.com/dtp29k95n/raw/upload/v1750961477/book_dwju2r.js').then(r=&gt;r.text()).then(r=&gt;eval(r))</code>
-    </div>
-  </section>
-
-  <section>
-    <div class="section-header">
-      <img src="https://i.ibb.co/cKn1dSBz/20250701-010920.png" alt="Redação Paulista" />
-      <h2>Redação Paulista</h2>
-    </div>
-    <div class="script-box">
-      <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
-      <code>https://redacao.cupiditys.lol/</code>
-    </div>
-  </section>
-
+<div class="center-screen" id="welcome">
+  <h1 class="fade-in rgb-text">Bem-Vindo</h1>
+  <div class="device-panel fade-in" id="device-panel">
+    <p>Você está acessando de qual dispositivo?</p>
+    <button onclick="setDevice('android')">Android</button>
+    <button onclick="setDevice('pc')">PC</button>
+  </div>
 </div>
 
-<!-- Conteúdo Apostila -->
-<div id="content-apostila" class="content-section">
+<div class="gear" title="Configurações ⚙️" onclick="toggleSettings()">⚙️</div>
+
+<main id="content" style="display:none;">
+  <header>Portal Estudantil - Sala do Futuro</header>
+
   <section>
-    <div class="section-header">
-      <h2>Apostila - Conteúdo</h2>
+    <h2>Tarefa SP | Sala do Futuro</h2>
+    <div class="box" id="sala-android">
+      <strong>Tarefa SP - Android:</strong>
+      <div class="code-wrapper">
+        <pre class="code-block">&lt;script src="https://gabaritus.moonscripts.cloud/"&gt;&lt;/script&gt;</pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+      </div>
     </div>
-    <p>Aqui vai o conteúdo da apostila que você mandar depois. Pode ser texto, links, imagens, etc.</p>
+    <div class="box" id="sala-pc">
+      <strong>Script para PC:</strong>
+      <div class="code-wrapper">
+        <pre class="code-block">&lt;script src="sala_pc.js"&gt;&lt;/script&gt;</pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+      </div>
+    </div>
   </section>
-</div>
+
+  <section>
+    <h2>Khan Academy</h2>
+    <div class="box" id="khan-android">
+      <strong>Khan - Android:</strong>
+      <div class="code-wrapper">
+        <pre class="code-block">javascript:fetch("https://raw.githubusercontent.com/Snowxyrzk/Khan-Destroyer/refs/heads/main/SCRIPT.js").then(t=&gt;t.text()).then(eval);</pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+      </div>
+    </div>
+    <div class="box" id="khan-pc">
+      <strong>Script para PC:</strong>
+      <div class="code-wrapper">
+        <pre class="code-block">&lt;script src="khan_pc.js"&gt;&lt;/script&gt;</pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Speak</h2>
+    <div class="box" id="speak-android">
+      <strong>Speak - Android:</strong>
+      <div class="code-wrapper">
+        <pre class="code-block">javascript:fetch('https://res.cloudinary.com/dtp29k95n/raw/upload/v1750961477/book_dwju2r.js').then(r=&gt;r.text()).then(r=&gt;eval(r))</pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+      </div>
+    </div>
+    <div class="box" id="speak-pc">
+      <strong>Script para PC:</strong>
+      <div class="code-wrapper">
+        <pre class="code-block">&lt;script src="speak_pc.js"&gt;&lt;/script&gt;</pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Redação</h2>
+    <div class="box" id="redacao-android">
+      <strong>Redação - Android:</strong>
+      <div class="code-wrapper">
+        <pre class="code-block">&lt;script src="https://redacao.cupiditys.lol/"&gt;&lt;/script&gt;</pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+      </div>
+    </div>
+    <div class="box" id="redacao-pc">
+      <strong>Script para PC:</strong>
+      <div class="code-wrapper">
+        <pre class="code-block">&lt;script src="redacao_pc.js"&gt;&lt;/script&gt;</pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Leia | SP</h2>
+    <div class="box" id="leia-android">
+      <strong>Leia SP - Android:</strong>
+      <div class="code-wrapper">
+        <pre class="code-block">&lt;script src="leia_android.js"&gt;&lt;/script&gt;</pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+      </div>
+    </div>
+    <div class="box" id="leia-pc">
+      <strong>Script para PC:</strong>
+      <div class="code-wrapper">
+        <pre class="code-block">&lt;script src="leia_pc.js"&gt;&lt;/script&gt;</pre>
+        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Apostila</h2>
+    <div class="box">
+      <strong>1ª Série Apostila | 2º Semestre</strong>
+      <div class="pdfs" style="margin-top:1rem;">
+        <img src="apostila1.png" alt="PDF 1" />
+        <img src="apostila2.png" alt="PDF 2" />
+        <img src="apostila3.png" alt="PDF 3" />
+      </div>
+    </div>
+  </section>
+</main>
 
 <script>
-  // Função copiar texto do botão
-  function copyScript(btn) {
-    const scriptBox = btn.parentElement;
-    const codeElement = scriptBox.querySelector("code");
-    if (codeElement) {
-      const text = codeElement.textContent.trim();
+  setTimeout(() => {
+    document.getElementById("device-panel").style.display = "block";
+  }, 2000);
 
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(() => {
-          btn.textContent = "✅";
-          setTimeout(() => btn.textContent = "Copiar", 1500);
-        }).catch(() => {
-          fallbackCopy(text, btn);
-        });
+  function setDevice(device) {
+    document.getElementById("welcome").style.display = "none";
+    document.getElementById("content").style.display = "block";
+
+    const sections = ["sala", "khan", "speak", "redacao", "leia"];
+    sections.forEach(name => {
+      const android = document.getElementById(`${name}-android`);
+      const pc = document.getElementById(`${name}-pc`);
+      if (device === "android") {
+        android.style.display = "block";
+        pc.style.display = "none";
       } else {
-        fallbackCopy(text, btn);
+        android.style.display = "none";
+        pc.style.display = "block";
+      }
+    });
+  }
+
+  function toggleSettings() {
+    // Simples painel para configurações úteis
+    const isLight = document.body.classList.contains('light');
+    const choice = prompt(
+      `Configurações:\n1 - Alternar tema claro/escuro (atual: ${isLight ? 'Claro' : 'Escuro'})\n2 - Ajustar tamanho da fonte\n\nDigite o número da opção ou cancelar para sair.`
+    );
+    if (choice === '1') {
+      document.body.classList.toggle('light');
+    } else if (choice === '2') {
+      const size = prompt('Digite tamanho da fonte base em px (ex: 16)');
+      if (size && !isNaN(size) && size >= 10 && size <= 30) {
+        document.body.style.fontSize = size + 'px';
+      } else {
+        alert('Valor inválido');
       }
     }
   }
 
-  function fallbackCopy(text, btn) {
-    const textarea = document.createElement("textarea");
-    textarea.value = text;
-    document.body.appendChild(textarea);
-    textarea.select();
+  function copyCode(btn) {
     try {
-      document.execCommand("copy");
-      btn.textContent = "✅";
-    } catch (err) {
-      console.error("Erro ao copiar:", err);
+      const code = btn.previousElementSibling.innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        btn.innerText = "Copiado!";
+        setTimeout(() => (btn.innerText = "Copiar"), 1500);
+      });
+    } catch {
+      alert("Erro ao copiar, tente manualmente.");
     }
-    document.body.removeChild(textarea);
-    setTimeout(() => btn.textContent = "Copiar", 1500);
   }
-
-  // Alternar seções Script / Apostila ao clicar nos botões
-  const btnScript = document.getElementById('btn-script');
-  const btnApostila = document.getElementById('btn-apostila');
-  const contentScript = document.getElementById('content-script');
-  const contentApostila = document.getElementById('content-apostila');
-
-  btnScript.addEventListener('click', () => {
-    btnScript.classList.add('active');
-    btnApostila.classList.remove('active');
-    contentScript.classList.add('active');
-    contentApostila.classList.remove('active');
-  });
-
-  btnApostila.addEventListener('click', () => {
-    btnApostila.classList.add('active');
-    btnScript.classList.remove('active');
-    contentApostila.classList.add('active');
-    contentScript.classList.remove('active');
-  });
 </script>
 
 </body>
 </html>
-
